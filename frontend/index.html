@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Disease Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Parkinson's Disease Predictor</h1>
+        <p>Enter the 22 vocal measurements below to predict the presence of Parkinson's.</p>
+
+        <form id="prediction-form">
+            <div class="form-grid">
+                
+                <div class="input-group">
+                    <label for="mdvp_fo">MDVP:Fo(Hz)</label>
+                    <input type="number" step="any" id="mdvp_fo" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_fhi">MDVP:Fhi(Hz)</label>
+                    <input type="number" step="any" id="mdvp_fhi" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_flo">MDVP:Flo(Hz)</label>
+                    <input type="number" step="any" id="mdvp_flo" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_apq">MDVP:APQ</label>
+                    <input type="number" step="any" id="mdvp_apq" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="mdvp_jitter_percent">MDVP:Jitter(%)</label>
+                    <input type="number" step="any" id="mdvp_jitter_percent" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_jitter_abs">MDVP:Jitter(Abs)</label>
+                    <input type="number" step="any" id="mdvp_jitter_abs" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_rap">MDVP:RAP</label>
+                    <input type="number" step="any" id="mdvp_rap" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_ppq">MDVP:PPQ</label>
+                    <input type="number" step="any" id="mdvp_ppq" required>
+                </div>
+                <div class="input-group">
+                    <label for="jitter_ddp">Jitter:DDP</label>
+                    <input type="number" step="any" id="jitter_ddp" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="mdvp_shimmer">MDVP:Shimmer</label>
+                    <input type="number" step="any" id="mdvp_shimmer" required>
+                </div>
+                <div class="input-group">
+                    <label for="mdvp_shimmer_db">MDVP:Shimmer(dB)</label>
+                    <input type="number" step="any" id="mdvp_shimmer_db" required>
+                </div>
+                <div class="input-group">
+                    <label for="shimmer_apq3">Shimmer:APQ3</label>
+                    <input type="number" step="any" id="shimmer_apq3" required>
+                </div>
+                <div class="input-group">
+                    <label for="shimmer_apq5">Shimmer:APQ5</label>
+                    <input type="number" step="any" id="shimmer_apq5" required>
+                </div>
+                <div class="input-group">
+                    <label for="shimmer_dda">Shimmer:DDA</label>
+                    <input type="number" step="any" id="shimmer_dda" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="nhr">NHR</label>
+                    <input type="number" step="any" id="nhr" required>
+                </div>
+                <div class="input-group">
+                    <label for="hnr">HNR</label>
+                    <input type="number" step="any" id="hnr" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="rpde">RPDE</label>
+                    <input type="number" step="any" id="rpde" required>
+                </div>
+                <div class="input-group">
+                    <label for="dfa">DFA</label>
+                    <input type="number" step="any" id="dfa" required>
+                </div>
+                <div class="input-group">
+                    <label for="spread1">spread1</label>
+                    <input type="number" step="any" id="spread1" required>
+                </div>
+                <div class="input-group">
+                    <label for="spread2">spread2</label>
+                    <input type="number" step="any" id="spread2" required>
+                </div>
+                <div class="input-group">
+                    <label for="d2">D2</label>
+                    <input type="number" step="any" id="d2" required>
+                </div>
+                <div class="input-group">
+                    <label for="ppe">PPE</label>
+                    <input type="number" step="any" id="ppe" required>
+                </div>
+            </div>
+
+            <button type="submit" id="predict-button">Predict</button>
+        </form>
+
+        <div id="result-container">
+            <h2 id="result-text"></h2>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
