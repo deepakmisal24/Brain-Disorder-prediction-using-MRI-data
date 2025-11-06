@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container form-container">
+        <a href="index.html" style="text-decoration: none; color: #555;">&larr; Back to Portal</a>
+        
+        <h1>Brain Tumor Detection</h1>
+        
+        <form id="prediction-form">
+            <div class="form-grid">
+                
+                <div class="form-group">
+                    <label for="mean">Mean</label>
+                    <input type="number" step="any" id="mean" name="Mean" required>
+                </div>
+                <div class="form-group">
+                    <label for="variance">Variance</label>
+                    <input type="number" step="any" id="variance" name="Variance" required>
+                </div>
+                <div class="form-group">
+                    <label for="std_dev">Standard Deviation</label>
+                    <input type="number" step="any" id="std_dev" name="Standard Deviation" required>
+                </div>
+                <div class="form-group">
+                    <label for="entropy">Entropy</label>
+                    <input type="number" step="any" id="entropy" name="Entropy" required>
+                </div>
+                <div class="form-group">
+                    <label for="skewness">Skewness</label>
+                    <input type="number" step="any" id="skewness" name="Skewness" required>
+                </div>
+                <div class="form-group">
+                    <label for="kurtosis">Kurtosis</label>
+                    <input type="number" step="any" id="kurtosis" name="Kurtosis" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrast">Contrast</label>
+                    <input type="number" step="any" id="contrast" name="Contrast" required>
+                </div>
+                <div class="form-group">
+                    <label for="energy">Energy</label>
+                    <input type="number" step="any" id="energy" name="Energy" required>
+                </div>
+                <div class="form-group">
+                    <label for="asm">ASM</label>
+                    <input type="number" step="any" id="asm" name="ASM" required>
+                </div>
+                <div class="form-group">
+                    <label for="homogeneity">Homogeneity</label>
+                    <input type="number" step="any" id="homogeneity" name="Homogeneity" required>
+                </div>
+                <div class="form-group">
+                    <label for="dissimilarity">Dissimilarity</label>
+                    <input type="number" step="any" id="dissimilarity" name="Dissimilarity" required>
+                </div>
+                <div class="form-group">
+                    <label for="correlation">Correlation</label>
+                    <input type="number" step="any" id="correlation" name="Correlation" required>
+                </div>
+                <div class="form-group">
+                    <label for="coarseness">Coarseness</label>
+                    <input type="number" step="any" id="coarseness" name="Coarseness" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Predict</button>
+
+                <div id="result-container" role="alert" style="display: none;">
+                    <p id="result-text"></p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    
+    <script src="braintumor.js" defer></script>
+</body>
+</html>
