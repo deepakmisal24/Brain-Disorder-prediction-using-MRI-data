@@ -13,3 +13,7 @@ S3: Run the Frontend Server In your VSCode file explorer:\
 S4: Use the Application\
     &nbsp;&nbsp;&nbsp;&nbsp;Open your web browser (like Chrome or Firefox).\
     &nbsp;&nbsp;&nbsp;&nbsp;Go to this address: `http://localhost:8000`
+
+
+
+NOTE: If you make any changes to the program code then go to the web browser where the localhost is running then enter `ctrl + shift + R` this will refresh the page thus show the new changes
