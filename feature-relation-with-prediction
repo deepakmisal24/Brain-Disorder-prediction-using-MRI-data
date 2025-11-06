@@ -1,0 +1,50 @@
+Relationship of feature value with possibility of positive Parkinson's Disorder
+  MDVP:Fo(Hz): not a key indicator
+  MDVP:Fhi(Hz): not a key indicator
+  MDVP:Flo(Hz): not a key indicator
+  MDVP:Jitter(%): directly proportional
+  MDVP:Jitter(Abs): directly proportional
+  MDVP:RAP: directly proportional
+  MDVP:PPQ: directly proportional
+  Jitter:DDP: directly proportional
+  MDVP:Shimmer: directly proportional
+  MDVP:Shimmer(dB): directly proportional
+  Shimmer:APQ3: directly proportional
+  Shimmer:APQ5: directly proportional
+  MDVP:APQ: directly proportional
+  Shimmer:DDA: directly proportional
+  NHR (Noise-to-Harmonics Ratio): directly proportional
+  HNR (Harmonics-to-Noise Ratio): inversely proportional
+  RPDE: directly proportional
+  DFA: inversely proportional
+  spread1: directly proportional
+  spread2: directly proportional
+  D2: directly proportional
+  PPE: directly proportional
+
+
+Relationship of feature value with possibility of positive Alzheimer Disorder
+  MMSE: inversely proportional
+  nWBV (Normalized Whole Brain Volume): inversely proportional
+  EDUC (Education): inversely proportional
+  Age: directly proportional
+  SES (Socioeconomic Status): directly proportional
+  eTIV (Est. Intracranial Volume): not a key indicator
+  ASF (Atlas Scaling Factor): not a key indicator
+  M/F (Gender): not a key indicator
+
+
+Relationship of feature value with possibility of positive Brain Tumor
+  Variance: directly proportional
+  Standard Deviation: directly proportional
+  Skewness: directly proportional
+  Kurtosis: directly proportional
+  Contrast: directly proportional
+  Dissimilarity: directly proportional
+  Mean: inversely proportional
+  Entropy: inversely proportional
+  Energy: inversely proportional
+  ASM (Angular Second Moment): inversely proportional
+  Homogeneity: inversely proportional
+  Correlation: inversely proportional
+  Coarseness: directly proportional
