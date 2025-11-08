@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroDetect - AI Disease Prediction</title>
+    <link rel="stylesheet" href="{% static 'predictor/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>NeuroDetect</h1>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Advanced Neurological Disease Prediction</h2>
+                <p>Leveraging AI to provide early insights into Alzheimer's, Parkinson's, and Brain Tumors. Choose a model below to get started.</p>
+            </div>
+        </section>
+
+        <section class="model-selection">
+            <h2>Select a Disease Model</h2>
+            <div class="cards-container">
+                <!-- Alzheimer's Card -->
+                <div class="card">
+                    <div class="card-image-container">
+                        <img src="{% static 'predictor/images/alzheimers_brain.webp' %}" alt="Brain scan showing signs of Alzheimer's">
+                    </div>
+                    <h3>Alzheimer's Disease</h3>
+                    <p>Predict the stage of Alzheimer's using clinical data or MRI scans. Supports both numerical and image-based analysis.</p>
+                    <a href="{% url 'alzheimers_page' %}" class="btn">Select Model</a>
+                </div>
+
+                <!-- Brain Tumor Card -->
+                <div class="card">
+                    <div class="card-image-container">
+                        <img src="{% static 'predictor/images/braintumor_brain.webp' %}" alt="Brain scan showing a tumor">
+                    </div>
+                    <h3>Brain Tumor</h3>
+                    <p>Detect the presence and type of brain tumors from MRI images or derived numerical features.</p>
+                    <a href="{% url 'braintumor_page' %}" class="btn">Select Model</a>
+                </div>
+
+                <!-- Parkinson's Card -->
+                <div class="card">
+                    <div class="card-image-container">
+                        <img src="{% static 'predictor/images/parkinsons_brain.jpg' %}" alt="Brain diagram related to Parkinson's">
+                    </div>
+                    <h3>Parkinson's Disease</h3>
+                    <p>Analyze vocal features from numerical data or MRI scans to detect Parkinson's disease.</p>
+                    <a href="{% url 'parkinsons_page' %}" class="btn">Select Model</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NeuroDetect. All rights reserved.</p>
+    </footer>
+</body>
+</html>

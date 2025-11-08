@@ -1,0 +1,32 @@
+# Python / Django
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# IDE / Editor specific
+.idea/
+.vscode/
+
+# Datasets (These should not be in version control)
+*.csv
+*.xlsx
+
+# Kaggle credentials
+kaggle.json
+
+# Static files collected for deployment
+staticfiles/
+
+# Media files uploaded by users
+media/
+
+# Environment variables
+.env

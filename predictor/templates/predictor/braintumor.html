@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Prediction - NeuroDetect</title>
+    <link rel="stylesheet" href="{% static 'predictor/style.css' %}">
+    <link rel="stylesheet" href="{% static 'predictor/form_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'index' %}" class="nav-link"><h1>NeuroDetect</h1></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Brain Tumor Prediction</h2>
+            <p>Choose your prediction method. You can either upload an MRI scan for our CNN model or enter numerical features for our ANN model.</p>
+
+            <div class="prediction-choice">
+                <button id="show-image-form" class="choice-btn active">Predict with MRI Image</button>
+                <button id="show-numerical-form" class="choice-btn">Predict with Numerical Data</button>
+            </div>
+
+            <!-- Image Upload Form -->
+            <form id="image-form" class="prediction-form active-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="mri-image">Upload Brain MRI Image</label>
+                    <input type="file" id="mri-image" name="mri_image" accept="image/*" required>
+                    <div class="image-preview-box" id="image-preview">
+                        <span class="image-preview-text">Image Preview</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Image</button>
+            </form>
+
+            <!-- Numerical Data Form -->
+            <form id="numerical-form" class="prediction-form" method="post">
+                {% csrf_token %}
+                <div class="numerical-grid">
+                    <div class="form-group">
+                        <label for="mean">Mean</label>
+                        <input type="number" step="any" id="mean" name="mean" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="variance">Variance</label>
+                        <input type="number" step="any" id="variance" name="variance" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="std-dev">Standard Deviation</label>
+                        <input type="number" step="any" id="std-dev" name="std_dev" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="entropy">Entropy</label>
+                        <input type="number" step="any" id="entropy" name="entropy" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="skewness">Skewness</label>
+                        <input type="number" step="any" id="skewness" name="skewness" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kurtosis">Kurtosis</label>
+                        <input type="number" step="any" id="kurtosis" name="kurtosis" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrast">Contrast</label>
+                        <input type="number" step="any" id="contrast" name="contrast" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="energy">Energy</label>
+                        <input type="number" step="any" id="energy" name="energy" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asm">ASM</label>
+                        <input type="number" step="any" id="asm" name="asm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="homogeneity">Homogeneity</label>
+                        <input type="number" step="any" id="homogeneity" name="homogeneity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dissimilarity">Dissimilarity</label>
+                        <input type="number" step="any" id="dissimilarity" name="dissimilarity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correlation">Correlation</label>
+                        <input type="number" step="any" id="correlation" name="correlation" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="coarseness">Coarseness</label>
+                        <input type="number" step="any" id="coarseness" name="coarseness" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Data</button>
+            </form>
+            
+            <!-- Prediction Result Area -->
+            <div id="prediction-result" class="result-container" style="display:none;">
+                <h3>Prediction Result</h3>
+                <p id="result-text"></p>
+                <div id="confidence-score" style="display:none;">
+                    <strong>Confidence:</strong> <span id="confidence-text"></span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NeuroDetect. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'predictor/braintumor.js' %}"></script>
+</body>
+</html>

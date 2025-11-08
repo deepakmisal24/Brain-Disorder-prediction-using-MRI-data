@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Prediction - NeuroDetect</title>
+    <link rel="stylesheet" href="{% static 'predictor/style.css' %}">
+    <link rel="stylesheet" href="{% static 'predictor/form_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'index' %}" class="nav-link"><h1>NeuroDetect</h1></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Parkinson's Disease Prediction</h2>
+            <p>Choose your prediction method. Upload an MRI scan for our CNN model or enter vocal features for our SVM model.</p>
+
+            <div class="prediction-choice">
+                <button id="show-image-form" class="choice-btn active">Predict with MRI Image</button>
+                <button id="show-numerical-form" class="choice-btn">Predict with Vocal Features</button>
+            </div>
+
+            <!-- Image Upload Form -->
+            <form id="image-form" class="prediction-form active-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="mri-image">Upload Brain MRI Image</label>
+                    <input type="file" id="mri-image" name="mri_image" accept="image/*" required>
+                    <div class="image-preview-box" id="image-preview">
+                        <span class="image-preview-text">Image Preview</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Image</button>
+            </form>
+
+            <!-- Numerical Data Form -->
+            <form id="numerical-form" class="prediction-form" method="post">
+                {% csrf_token %}
+                <div class="numerical-grid">
+                    <!-- Fields based on the parkinsons.csv -->
+                    <div class="form-group"><label>MDVP:Fo(Hz)</label><input type="number" step="any" name="MDVP:Fo(Hz)" required></div>
+                    <div class="form-group"><label>MDVP:Fhi(Hz)</label><input type="number" step="any" name="MDVP:Fhi(Hz)" required></div>
+                    <div class="form-group"><label>MDVP:Flo(Hz)</label><input type="number" step="any" name="MDVP:Flo(Hz)" required></div>
+                    <div class="form-group"><label>MDVP:Jitter(%)</label><input type="number" step="any" name="MDVP:Jitter(%)" required></div>
+                    <div class="form-group"><label>MDVP:Jitter(Abs)</label><input type="number" step="any" name="MDVP:Jitter(Abs)" required></div>
+                    <div class="form-group"><label>MDVP:RAP</label><input type="number" step="any" name="MDVP:RAP" required></div>
+                    <div class="form-group"><label>MDVP:PPQ</label><input type="number" step="any" name="MDVP:PPQ" required></div>
+                    <div class="form-group"><label>Jitter:DDP</label><input type="number" step="any" name="Jitter:DDP" required></div>
+                    <div class="form-group"><label>MDVP:Shimmer</label><input type="number" step="any" name="MDVP:Shimmer" required></div>
+                    <div class="form-group"><label>MDVP:Shimmer(dB)</label><input type="number" step="any" name="MDVP:Shimmer(dB)" required></div>
+                    <div class="form-group"><label>Shimmer:APQ3</label><input type="number" step="any" name="Shimmer:APQ3" required></div>
+                    <div class="form-group"><label>Shimmer:APQ5</label><input type="number" step="any" name="Shimmer:APQ5" required></div>
+                    <div class="form-group"><label>MDVP:APQ</label><input type="number" step="any" name="MDVP:APQ" required></div>
+                    <div class="form-group"><label>Shimmer:DDA</label><input type="number" step="any" name="Shimmer:DDA" required></div>
+                    <div class="form-group"><label>NHR</label><input type="number" step="any" name="NHR" required></div>
+                    <div class="form-group"><label>HNR</label><input type="number" step="any" name="HNR" required></div>
+                    <div class="form-group"><label>RPDE</label><input type="number" step="any" name="RPDE" required></div>
+                    <div class="form-group"><label>DFA</label><input type="number" step="any" name="DFA" required></div>
+                    <div class="form-group"><label>spread1</label><input type="number" step="any" name="spread1" required></div>
+                    <div class="form-group"><label>spread2</label><input type="number" step="any" name="spread2" required></div>
+                    <div class="form-group"><label>D2</label><input type="number" step="any" name="D2" required></div>
+                    <div class="form-group"><label>PPE</label><input type="number" step="any" name="PPE" required></div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Data</button>
+            </form>
+            
+            <!-- Prediction Result Area -->
+            <div id="prediction-result" class="result-container" style="display:none;">
+                <h3>Prediction Result</h3>
+                <p id="result-text"></p>
+                <div id="confidence-score" style="display:none;">
+                    <strong>Confidence:</strong> <span id="confidence-text"></span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NeuroDetect. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'predictor/parkinsons.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Prediction - NeuroDetect</title>
+    <link rel="stylesheet" href="{% static 'predictor/style.css' %}">
+    <link rel="stylesheet" href="{% static 'predictor/form_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'index' %}" class="nav-link"><h1>NeuroDetect</h1></a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Alzheimer's Disease Prediction</h2>
+            <p>Choose your prediction method. Upload an MRI scan for our CNN model or enter clinical data for our Gradient Boosting model.</p>
+
+            <div class="prediction-choice">
+                <button id="show-image-form" class="choice-btn active">Predict with MRI Image</button>
+                <button id="show-numerical-form" class="choice-btn">Predict with Clinical Data</button>
+            </div>
+
+            <!-- Image Upload Form -->
+            <form id="image-form" class="prediction-form active-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="mri-image">Upload Brain MRI Image</label>
+                    <input type="file" id="mri-image" name="mri_image" accept="image/*" required>
+                    <div class="image-preview-box" id="image-preview">
+                        <span class="image-preview-text">Image Preview</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Image</button>
+            </form>
+
+            <!-- Numerical Data Form -->
+            <form id="numerical-form" class="prediction-form" method="post">
+                {% csrf_token %}
+                <div class="numerical-grid">
+                    <div class="form-group">
+                        <label for="m-f">Gender (M/F)</label>
+                        <select id="m-f" name="m_f" class="form-control">
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="educ">Education (Years)</label>
+                        <input type="number" id="educ" name="educ" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ses">Socioeconomic Status (SES)</label>
+                        <input type="number" step="any" id="ses" name="ses">
+                    </div>
+                    <div class="form-group">
+                        <label for="mmse">MMSE</label>
+                        <input type="number" step="any" id="mmse" name="mmse" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="etiv">eTIV</label>
+                        <input type="number" id="etiv" name="etiv" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nwbv">nWBV</label>
+                        <input type="number" step="any" id="nwbv" name="nwbv" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asf">ASF</label>
+                        <input type="number" step="any" id="asf" name="asf" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn submit-btn">Predict from Data</button>
+            </form>
+            
+            <!-- Prediction Result Area -->
+            <div id="prediction-result" class="result-container" style="display:none;">
+                <h3>Prediction Result</h3>
+                <p id="result-text"></p>
+                <div id="confidence-score" style="display:none;">
+                    <strong>Confidence:</strong> <span id="confidence-text"></span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NeuroDetect. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'predictor/alzheimers.js' %}"></script>
+</body>
+</html>
