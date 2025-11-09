@@ -70,13 +70,15 @@
 
 .form-group input[type="text"],
 .form-group input[type="number"],
-.form-group input[type="file"] {
+.form-group input[type="file"],
+.form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box; /* Important for padding and width */
     font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 .form-group input[type="file"] {
@@ -141,13 +143,39 @@
 }
 
 #result-text {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 }
+
+/* Color classes for results */
+.result-positive { color: #e74c3c; } /* Red for detected/positive */
+.result-negative { color: #2ecc71; } /* Green for healthy/negative */
+.result-neutral { color: #f39c12; } /* Orange for mild cases */
+
 
 #confidence-text {
     font-weight: 400;
+    font-size: 1rem;
+    color: #555;
 }
+
+/* --- Loading Spinner --- */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 /* --- Nav Link --- */
 .nav-link {

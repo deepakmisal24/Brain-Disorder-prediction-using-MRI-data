@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- AJAX Form Submission ---
     async function handleFormSubmit(event) {
-        event.preventDefault(); // Prevent default page reload
+        event.preventDefault();
         const form = event.target;
         const formData = new FormData(form);
         
-        // Show a loading state
+        // --- Show loading spinner ---
         resultContainer.style.display = 'block';
-        resultText.textContent = 'Analyzing...';
+        resultText.innerHTML = '<div class="loader"></div>';
         confidenceScoreDiv.style.display = 'none';
 
         try {
@@ -71,8 +71,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const data = await response.json();
 
-            // Display the result
-            resultText.textContent = data.prediction;
+            // --- Display the result with colors ---
+            resultText.innerHTML = data.prediction;
+            resultText.classList.remove('result-positive', 'result-negative', 'result-neutral');
+
+            const predictionText = data.prediction.toLowerCase();
+            if (predictionText.includes('non demented') || predictionText.includes('healthy')) {
+                resultText.classList.add('result-negative');
+            } else if (predictionText.includes('very mild')) {
+                resultText.classList.add('result-neutral');
+            } else {
+                resultText.classList.add('result-positive');
+            }
+
             if (data.confidence) {
                 confidenceText.textContent = data.confidence;
                 confidenceScoreDiv.style.display = 'block';
@@ -80,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } catch (error) {
             resultText.textContent = `Error: ${error.message}`;
+            resultText.classList.add('result-positive');
             confidenceScoreDiv.style.display = 'none';
         }
     }
